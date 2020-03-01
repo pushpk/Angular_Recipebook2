@@ -1,11 +1,12 @@
-<div class="row">
+<div *ngIf="rec">
+  <div class="row">
   <div class="col-xs-12">
-    <img src="" alt="" class="img-responsive">
+    <img [src]="rec.imagePath" alt="" class="img-responsive" style="max-width: 250px;">
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <h1>Recipe Name</h1>
+    <h2>{{rec.name}}</h2>
   </div>
 </div>
 <div class="dropdown">
@@ -36,11 +37,13 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    Description
+    <p>{{rec.description}}</p>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
     Ingredients
   </div>
+</div>
+
 </div>

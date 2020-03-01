@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  loadModuleName : string = 'recipe';
+
+  loadModule(name: string){
+    this.loadModuleName = name;
+  }
 }
