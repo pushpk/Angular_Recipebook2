@@ -15,8 +15,4 @@ recipeSelected = new EventEmitter<Recipe>();
 
   constructor() { }
 
-  serRecipe(recipe: Recipe)
-  {
-    this.recipeSelected.emit(recipe);
-  }
 }

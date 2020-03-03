@@ -16,6 +16,6 @@ export class RecipeItemComponent implements OnInit {
   }
 
   loadRecipe(){
-      this.recipeService.serRecipe(this.recipeItem);
+      this.recipeService.recipeSelected.emit(this.recipeItem);
   }
 }
