@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeStarterComponent } from './recipes/recipe-starter/recipe-starter.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { FormsComponentComponent } from './forms-component/forms-component.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     ShoppingEditComponent,
     DropdownDirective,
     RecipeStarterComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    FormsComponentComponent
     
 
   ],
