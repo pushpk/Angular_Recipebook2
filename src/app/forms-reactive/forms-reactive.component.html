@@ -1,0 +1,23 @@
+<form [formGroup]="signupform" (ngSubmit)="onSubmit()">
+    <div class="form-group" >
+    <label for="usr">Name:</label>
+    <input type="text" class="form-control" id="usr"  name="userName" formControlName="Username">
+    <!-- <p *ngIf="userName.invalid && userName.touched">Username is required</p> -->
+  </div>
+  
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email"  name="email"  formControlName="Email">
+  </div>
+  <div class="form-group">
+    <label for="sel1">Select list:</label>
+    <select class="form-control" id="sel1" name="selectList" formControlName="selectList">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+  </div>
+ 
+  <button type="submit" class="btn btn-primary" >Submit</button>
+  </form>

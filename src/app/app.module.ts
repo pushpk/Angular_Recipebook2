@@ -18,6 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RecipeStarterComponent } from './recipes/recipe-starter/recipe-starter.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { FormsComponentComponent } from './forms-component/forms-component.component';
+import { FormsReactiveComponent } from './forms-reactive/forms-reactive.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,14 +35,16 @@ import { FormsComponentComponent } from './forms-component/forms-component.compo
     DropdownDirective,
     RecipeStarterComponent,
     RecipeEditComponent,
-    FormsComponentComponent
+    FormsComponentComponent,
+    FormsReactiveComponent
     
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
     
     
   ],
