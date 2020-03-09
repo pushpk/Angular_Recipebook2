@@ -4,7 +4,6 @@ import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Route } from '@angular/compiler/src/core';
-import { relative } from 'path';
 
 @Component({
   selector: 'app-recipe-list',
