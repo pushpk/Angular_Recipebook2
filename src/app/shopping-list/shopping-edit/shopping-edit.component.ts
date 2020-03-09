@@ -40,7 +40,7 @@ export class ShoppingEditComponent implements OnInit {
   }
 
   DeleteIngr(){
-    this.shoppingListService.deleteIngr();
+    this.shoppingListService.deleteIngr(this.selectedIndex);
     this.ClearForm();
   }
 
