@@ -24,11 +24,8 @@ export class ShoppingEditComponent implements OnInit {
   ngOnInit() {
 
     this.shoppingListService.selectedIngr.subscribe((params : number) => {
-       console.log(params);
 
       this.editIngre = this.shoppingListService.getIngredient(params);
-
-      console.log(this.editIngre)
       this.form.setValue({name: this.editIngre.name, amount: this.editIngre.amount});
       this.selectedIndex = +params;
       this.editMode = true;
@@ -51,13 +48,14 @@ export class ShoppingEditComponent implements OnInit {
     const nameInput = this.form.value.name;
     const amountInput = this.form.value.amount;
 
+    const addedOrEditedIngredient = { name : nameInput, amount : amountInput};
     if(this.editMode)
     {
-      this.shoppingListService.editIngr(this.selectedIndex, this.editIngre);
+      this.shoppingListService.editIngr(this.selectedIndex, addedOrEditedIngredient);
 
     }
     else{ 
-      this.shoppingListService.createIng({ name : nameInput, amount : amountInput});
+      this.shoppingListService.createIng(addedOrEditedIngredient);
     }
       
 

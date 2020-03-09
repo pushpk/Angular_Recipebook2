@@ -42,7 +42,6 @@ export class ShoppinglistService {
   }
 
   editIngr(index : number, ingre : Ingredient){
-   
      this.ingredients[index]  = ingre;
       this.ingredientAdded.next(this.ingredients);
 
