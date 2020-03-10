@@ -16,7 +16,9 @@ export class RecipeEditComponent implements OnInit {
   id: number;
   editMode: boolean = false;
   recipeForm: FormGroup;
-  recipeItem: Recipe
+  recipeItem: Recipe;
+  
+  imageurforPreview : string
 
   constructor(private recipeService :RecipeService, private activatedRoute: ActivatedRoute, private router  :Router) { }
 
@@ -56,6 +58,8 @@ console.log(this.editMode);
 
           }
         }
+
+        
        
       }
 
