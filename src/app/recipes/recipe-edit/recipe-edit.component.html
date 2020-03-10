@@ -6,7 +6,7 @@
         <div class="col-xs-12">
           <button class="btn btn-success" type="submit" [disabled]="f.invalid && f.touched">
             {{ editMode ? 'Update' : 'Add' }}</button>
-          <button class="btn btn-primary" type="button" (click)="ClearForm();">Cancel</button>
+          <button class="btn btn-primary" type="button" (click)="NavigateBack();">Cancel</button>
         </div>
       </div>
       <hr />
@@ -52,7 +52,7 @@
       <hr />
 
       <div class="col-xs-2">
-        <button type="button" class="btn btn-success">
+        <button type="button" class="btn btn-success" (click)="addIngredient();">
           Add Ingredient
         </button>
       </div>

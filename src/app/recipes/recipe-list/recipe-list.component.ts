@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Route } from '@angular/compiler/src/core';
 
 @Component({
@@ -18,6 +18,11 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit() {
     this.recipes = this.recipeService.recipes;
+
+    this.recipeService.OnRecipeEdited.subscribe((recipes : Params) => {
+      
+        this.recipes = recipes as Recipe[];
+    });
   }
 
   createRecipe(){

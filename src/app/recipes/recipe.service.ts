@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class RecipeService {
   ];
   
 recipeSelected = new EventEmitter<Recipe>();
+OnRecipeEdited = new Subject<Recipe[]>();
 
 
 getRecipeItem(index: number){
@@ -23,4 +25,17 @@ getRecipeItem(index: number){
 }
   constructor() { }
 
+
+  saveRecipe(index: number, editedRecipe :  Recipe)
+  {
+    this.recipes[index] = editedRecipe;
+    this.OnRecipeEdited.next(this.recipes);
+
+  }
+
+  deleteRecipe(index:number)
+  {
+    this.recipes.splice(index, 1);
+    this.OnRecipeEdited.next(this.recipes);
+  }
 }

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe.model';
 import { Ingredient } from '../../shared/ingredient.model';
 import { forEach } from '@angular/router/src/utils/collection';
+import { validateConfig } from '@angular/router/src/config';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -17,7 +18,7 @@ export class RecipeEditComponent implements OnInit {
   recipeForm: FormGroup;
   recipeItem: Recipe
 
-  constructor(private recipeService :RecipeService, private activatedRoute: ActivatedRoute) { }
+  constructor(private recipeService :RecipeService, private activatedRoute: ActivatedRoute, private router  :Router) { }
 
   ngOnInit() {
 
@@ -53,28 +54,40 @@ export class RecipeEditComponent implements OnInit {
 
           }
         }
-        else{
-          console.log("no");
-        }
+       
 
     this.recipeForm = new FormGroup({
-      name : new FormControl(name), 
-      imageurl : new FormControl(imageurl),
-      description : new  FormControl(description),
+      name : new FormControl(name,Validators.required), 
+      imageurl : new FormControl(imageurl, Validators.required),
+      description : new  FormControl(description, Validators.required),
       ingredients : ingredients
     });
   }
 
-  console.log(this.recipeForm)
-  
-    
   }
 
- 
+  NavigateBack(){
+    this.router.navigate(['../'], {relativeTo: this.activatedRoute})
+  }
+  addIngredient(){
 
+    var ingre = this.recipeForm.get('ingredients') as FormArray;
+    ingre.push(new FormGroup({
+      name : new FormControl('', Validators.required), 
+      amount : new FormControl('', Validators.required),
+    }));
+
+  }
   onSubmit(){
 
-    console.log(this.recipeForm);
+    let editedRecipe = {name : this.recipeForm.value.name, 
+      imagePath : this.recipeForm.value.imageurl,
+      description : this.recipeForm.value.description,
+      ingredients : this.recipeForm.value.ingredients}
+    this.recipeService.saveRecipe(this.id,editedRecipe )
+
+    this.router.navigate(['../'], {relativeTo: this.activatedRoute})
+
   }
 
 }
