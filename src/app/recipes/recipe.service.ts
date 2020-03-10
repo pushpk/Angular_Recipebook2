@@ -21,15 +21,12 @@ OnRecipeEdited = new Subject<Recipe[]>();
 
 
 getRecipeItem(index: number){
-
   return this.recipes[index];
 }
   constructor(private shoppingListService : ShoppinglistService) { }
 
   addToShoppingList(ingredients : Ingredient[]){
-
       this.shoppingListService.addIngredients(ingredients);
-
   }
   saveRecipe(index: number, editedRecipe :  Recipe)
   {
