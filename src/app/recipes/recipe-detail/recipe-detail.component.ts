@@ -25,6 +25,10 @@ export class RecipeDetailComponent implements OnInit {
    
   }
 
+  addToShoppingList(){
+    this.recipeService.addToShoppingList(this.rec.ingredients);
+  }
+
   editRecipe(){
     this.activateRoute.params.subscribe((params : Params) => {
       this.id = +params['id'];
@@ -34,7 +38,12 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   deleteRecipe(){
-    
+    if(confirm("Are you sure to delete this recipe?")) {
+      
+        this.recipeService.deleteRecipe(this.id);
+        this.router.navigate(['../'])
+
+    }
   }
 
 }

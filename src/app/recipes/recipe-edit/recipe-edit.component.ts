@@ -14,19 +14,21 @@ import { validateConfig } from '@angular/router/src/config';
 })
 export class RecipeEditComponent implements OnInit {
   id: number;
-  editMode: boolean;
+  editMode: boolean = false;
   recipeForm: FormGroup;
   recipeItem: Recipe
 
   constructor(private recipeService :RecipeService, private activatedRoute: ActivatedRoute, private router  :Router) { }
 
   ngOnInit() {
+  
+    this.editMode = false;
 
     this.activatedRoute.params.subscribe((params : Params) => {
 
       this.id = +params['id'];
       this.editMode = params['id'] != null;
-
+console.log(this.editMode);
     });
 
 
@@ -55,6 +57,8 @@ export class RecipeEditComponent implements OnInit {
           }
         }
        
+      }
+
 
     this.recipeForm = new FormGroup({
       name : new FormControl(name,Validators.required), 
@@ -62,13 +66,14 @@ export class RecipeEditComponent implements OnInit {
       description : new  FormControl(description, Validators.required),
       ingredients : ingredients
     });
-  }
+ 
 
   }
 
   NavigateBack(){
     this.router.navigate(['../'], {relativeTo: this.activatedRoute})
   }
+
   addIngredient(){
 
     var ingre = this.recipeForm.get('ingredients') as FormArray;
@@ -80,14 +85,28 @@ export class RecipeEditComponent implements OnInit {
   }
   onSubmit(){
 
-    let editedRecipe = {name : this.recipeForm.value.name, 
+    let addedOrEditedRecipe = {name : this.recipeForm.value.name, 
       imagePath : this.recipeForm.value.imageurl,
       description : this.recipeForm.value.description,
       ingredients : this.recipeForm.value.ingredients}
-    this.recipeService.saveRecipe(this.id,editedRecipe )
 
+      if(this.editMode)
+      {
+      this.recipeService.saveRecipe(this.id,addedOrEditedRecipe )
+      }
+      else{
+        this.recipeService.addRecipe(addedOrEditedRecipe);
+      }
+
+    
     this.router.navigate(['../'], {relativeTo: this.activatedRoute})
 
+  }
+
+  DeleteThisIngredient(index : number)
+  {
+     var ingre = this.recipeForm.get('ingredients') as FormArray;
+    ingre.removeAt(index);
   }
 
 }

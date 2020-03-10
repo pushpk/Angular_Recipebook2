@@ -41,6 +41,12 @@ export class ShoppinglistService {
     
   }
 
+  addIngredients(ingrs : Ingredient[]){
+    this.ingredients = this.ingredients.concat(ingrs);
+    this.ingredientAdded.next(this.ingredients);
+    
+  }
+
   editIngr(index : number, ingre : Ingredient){
      this.ingredients[index]  = ingre;
       this.ingredientAdded.next(this.ingredients);
