@@ -20,6 +20,10 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { FormsComponentComponent } from './forms-component/forms-component.component';
 import { FormsReactiveComponent } from './forms-reactive/forms-reactive.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { DataStorageService } from './shared/datastorage.services';
+import { RecipeService } from './recipes/recipe.service';
+
 
 
 @NgModule({
@@ -43,12 +47,13 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule
     
     
   ],
-  providers: [ShoppinglistService],
+  providers: [ShoppinglistService, DataStorageService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

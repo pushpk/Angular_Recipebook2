@@ -17,11 +17,11 @@ export class RecipeListComponent implements OnInit {
   constructor(private recipeService : RecipeService, private aRoute : ActivatedRoute, private router : Router) { }
 
   ngOnInit() {
-    this.recipes = this.recipeService.recipes;
+   // this.recipes = this.recipeService.recipes;
 
-    this.recipeService.OnRecipeEdited.subscribe((recipes : Params) => {
-      
-        this.recipes = recipes as Recipe[];
+    this.recipeService.OnRecipeEdited.subscribe((recipes : Recipe[]) => {
+      console.log(recipes);
+        this.recipes = recipes ;
     });
   }
 
