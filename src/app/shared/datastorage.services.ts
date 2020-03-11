@@ -25,9 +25,8 @@ export class DataStorageService {
 
         this.http.get<Recipe[]>("https://recipebookapiservice20190223034351.azurewebsites.net/api/recipebook")
         .pipe(map(recipes => {
-           
             return recipes.map(recipe => {
-                return {...recipe, ingredients : recipe.ingredeints }
+                return {...recipe, ingredients : recipe.ingredients }
             });
         }))
             .subscribe((data: Recipe[]) => {
