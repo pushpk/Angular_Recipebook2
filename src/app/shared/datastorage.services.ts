@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { pipe } from 'rxjs';
+
 import { RecipeService } from '../recipes/recipe.service';
 
 @Injectable({
@@ -23,7 +23,13 @@ export class DataStorageService {
 
     getDataFromServer() {
 
-        this.http.get("https://recipebookapiservice20190223034351.azurewebsites.net/api/recipebook")
+        this.http.get<Recipe[]>("https://recipebookapiservice20190223034351.azurewebsites.net/api/recipebook")
+        .pipe(map(recipes => {
+           
+            return recipes.map(recipe => {
+                return {...recipe, ingredients : recipe.ingredeints }
+            });
+        }))
             .subscribe((data: Recipe[]) => {
                 this.recipeService.setRecipes(data);
             });

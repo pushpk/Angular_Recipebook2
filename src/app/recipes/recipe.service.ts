@@ -11,7 +11,7 @@ import { DataStorageService } from '../shared/datastorage.services';
 export class RecipeService {
     
   
-  recipes: Recipe[]
+  recipes: Recipe[] = [];
   // recipes: Recipe[] = 
   // [
   //   new Recipe('AB Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg', 
