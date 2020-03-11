@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DataStorageService } from './shared/datastorage.services';
 import { RecipeService } from './recipes/recipe.service';
+import { AuthComponent } from './auth/auth.component';
 
 
 
@@ -40,7 +41,8 @@ import { RecipeService } from './recipes/recipe.service';
     RecipeStarterComponent,
     RecipeEditComponent,
     FormsComponentComponent,
-    FormsReactiveComponent
+    FormsReactiveComponent,
+    AuthComponent
     
 
   ],
