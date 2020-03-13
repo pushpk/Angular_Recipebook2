@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Params } from "@angular/router";
 import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -11,6 +12,7 @@ export class AuthService{
 constructor(private http : HttpClient){}
 
 
+signedUpSuccess = new Subject<string>();
 
     //using https://reqres.in/ for login and password
 
@@ -20,8 +22,7 @@ constructor(private http : HttpClient){}
     {
         var requestObj = { email : email, password : password};
         this.http.post("https://reqres.in/api/register",requestObj).subscribe((params : Params) => {
-
-            console.log(params);
+              
         })
 
 
@@ -31,8 +32,11 @@ constructor(private http : HttpClient){}
     signup(email : string, password: string){
         var requestObj = { email : email, password : password};
         this.http.post("https://reqres.in/api/register",requestObj).subscribe((params : Params) => {
+            
+            this.signedUpSuccess.next(params.token);
+        }, (error : any) => {
 
-            console.log(params);
+                this.signedUpSuccess.next("");
         })
 
     }

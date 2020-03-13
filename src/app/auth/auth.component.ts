@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
 import {AuthService} from './authservice.service'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -9,9 +10,22 @@ import {AuthService} from './authservice.service'
 export class AuthComponent implements OnInit {
   signUpMode: boolean = false;
 
-  constructor(private authSer : AuthService) { }
+  constructor(private authSer : AuthService, private router : Router) { }
 
   ngOnInit() {
+    this.authSer.signedUpSuccess.subscribe((isSignedUpSuccess  :string) => {
+
+        console.log(isSignedUpSuccess);
+      if(isSignedUpSuccess)
+      {
+          this.router.navigate(['/recipes'])
+      }
+      else
+      {
+        alert("Something went wrong!");
+      }
+
+    });
   }
 
   onSubmit(form : NgForm){
