@@ -13,6 +13,7 @@ export class AuthService {
 
 
     signedUpOrLoginSuccess = new Subject<string>();
+    isLogoutSuccess = new Subject<boolean>();
     
     //using https://reqres.in/ for login and password
 
@@ -31,7 +32,7 @@ export class AuthService {
             this.signedUpOrLoginSuccess.next(params.token);
 
         }, (error: any) => {
-            this.signedUpOrLoginSuccess.next("");
+            alert("Please try again!");
         })
 
 
@@ -45,9 +46,13 @@ export class AuthService {
             localStorage.setItem("user-token",params.token);
             this.signedUpOrLoginSuccess.next(params.token);
         }, (error: any) => {
-            this.signedUpOrLoginSuccess.next("");
+            alert("Please try again!");
         })
 
     }
     //logout
+    logout(){
+        localStorage.removeItem("user-token");
+        this.isLogoutSuccess.next(true);
+    }
 }

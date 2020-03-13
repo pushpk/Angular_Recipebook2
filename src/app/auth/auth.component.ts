@@ -21,10 +21,7 @@ export class AuthComponent implements OnInit {
       {
           this.router.navigate(['/recipes'])
       }
-      else
-      {
-        alert("Something went wrong!");
-      }
+      
 
     });
   }

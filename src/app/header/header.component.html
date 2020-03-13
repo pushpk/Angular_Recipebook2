@@ -6,15 +6,18 @@
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        
-        <li><a href="#" [routerLink]="'/recipes'" >Recipes</a></li>
-        <li><a href="#" routerLink="/shopping-list" >Shopping List</a></li>
+
+        <li><a  [routerLink]="'/recipes'"  routerLinkActive="active" *ngIf="isloggedIn">Recipes</a></li>
+        <li><a  [routerLink]="'/shopping-list'" routerLinkActive="active" *ngIf="isloggedIn">Shopping List</a></li>
+        <li><a  [routerLink]="'/auth'" routerLinkActive="active" *ngIf="!isloggedIn">Authentication</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" appDropdown>
+        <li><a (click)="logout();"  *ngIf="isloggedIn" style="cursor: pointer;">Logout</a></li>
+        <li class="dropdown" appDropdown *ngIf="isloggedIn">
 
+          
           <!-- <div class="dropdown" >  -->
-            <a class=" dropdown-toggle" style="margin-top: 10px;">
+            <a class=" dropdown-toggle" >
               Manage  <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
