@@ -33,4 +33,15 @@ export class DataStorageService {
                 this.recipeService.setRecipes(data);
             });
     }
+
+    getDataFromServerResolver() {
+
+       return this.http.get<Recipe[]>("https://recipebookapiservice20190223034351.azurewebsites.net/api/recipebook")
+        .pipe(map(recipes => {
+            return recipes.map(recipe => {
+                return {...recipe, ingredients : recipe.ingredients }
+            });
+        }));
+           
+    }
 }

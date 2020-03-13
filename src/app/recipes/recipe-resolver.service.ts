@@ -18,7 +18,11 @@ export class RecipesResolverService implements Resolve<Recipe[]> {
         const recipes = this.rs.getRecipes();
         if(recipes.length === 0)
         {
-            return this.ds.getDataFromServer();
+             this.ds.getDataFromServerResolver().subscribe((data: Recipe[]) => {
+                return data;
+            });
+
+
         } else {
            return recipes;
         }

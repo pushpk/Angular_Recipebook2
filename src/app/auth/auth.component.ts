@@ -9,14 +9,15 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
   signUpMode: boolean = false;
+  userToken :string = null;
 
   constructor(private authSer : AuthService, private router : Router) { }
 
   ngOnInit() {
-    this.authSer.signedUpSuccess.subscribe((isSignedUpSuccess  :string) => {
+    this.authSer.signedUpOrLoginSuccess.subscribe((signedUpOrLoginToken  :string) => {
 
-        console.log(isSignedUpSuccess);
-      if(isSignedUpSuccess)
+        console.log(signedUpOrLoginToken);
+      if(signedUpOrLoginToken)
       {
           this.router.navigate(['/recipes'])
       }
@@ -34,6 +35,10 @@ export class AuthComponent implements OnInit {
     {
       this.authSer.signup(form.value.email,form.value.password);
 
+    }
+    else
+    {
+      this.authSer.login(form.value.email,form.value.password);
     }
     
   }

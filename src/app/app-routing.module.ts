@@ -8,10 +8,11 @@ import { RecipeStarterComponent } from './recipes/recipe-starter/recipe-starter.
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipesResolverService } from './recipes/recipe-resolver.service';
 import { AuthComponent } from './auth/auth.component';
+import { AuthGuardGuard } from './auth/auth-guard.guard';
 
 const routes: Routes = [
   {path : '', redirectTo : '/recipes', pathMatch : "full"},
-  {path: 'recipes', component : RecipesComponent,
+  {path: 'recipes', component : RecipesComponent, canActivate : [AuthGuardGuard] ,
    children : [
               { path : '', component : RecipeStarterComponent , resolve: [RecipesResolverService]},
               { path : 'new', component : RecipeEditComponent,  resolve: [RecipesResolverService]},
