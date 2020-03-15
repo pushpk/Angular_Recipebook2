@@ -2,7 +2,8 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppinglistService } from './shoppinglist.service';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import {Store} from '@ngrx/store'
 
 
 @Component({
@@ -12,16 +13,17 @@ import { Subject } from 'rxjs';
   
 })
 export class ShoppingListComponent implements OnInit {
-  ingredients: Ingredient[];
+  ingredients: Observable< {ingredients : Ingredient[]}>;
   
 
  
 
-  constructor(private shoppingListService: ShoppinglistService) { }
+  constructor(private shoppingListService: ShoppinglistService, private store : Store<{shoppingList : {ingredients : Ingredient[]}}>) { }
 
   ngOnInit() {
-    this.ingredients = this.shoppingListService.getIngredients();
-        this.shoppingListService.ingredientAdded.subscribe((ingr : Ingredient[]) => this.ingredients = ingr);
+    this.ingredients = this.store.select('shoppingList');
+    // this.ingredients = this.shoppingListService.getIngredients();
+    //     this.shoppingListService.ingredientAdded.subscribe((ingr : Ingredient[]) => this.ingredients = ingr);
   }
   
 

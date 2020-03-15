@@ -24,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataStorageService } from './shared/datastorage.services';
 import { RecipeService } from './recipes/recipe.service';
 import { AuthComponent } from './auth/auth.component';
+import { StoreModule } from '@ngrx/store';
+import { shoppingListReducer } from './shopping-list/store/shoppinglist-reducer';
 
 
 
@@ -44,6 +46,7 @@ import { AuthComponent } from './auth/auth.component';
     FormsReactiveComponent,
     AuthComponent
     
+    
 
   ],
   imports: [
@@ -51,7 +54,8 @@ import { AuthComponent } from './auth/auth.component';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({shoppingList : shoppingListReducer})
     
     
   ],
