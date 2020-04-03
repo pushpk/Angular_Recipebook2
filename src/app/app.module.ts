@@ -26,6 +26,7 @@ import { RecipeService } from './recipes/recipe.service';
 import { AuthComponent } from './auth/auth.component';
 import { StoreModule } from '@ngrx/store';
 import { shoppingListReducer } from './shopping-list/store/shoppinglist-reducer';
+import { TestComponent } from './test/test.component';
 
 
 
@@ -44,7 +45,8 @@ import { shoppingListReducer } from './shopping-list/store/shoppinglist-reducer'
     RecipeEditComponent,
     FormsComponentComponent,
     FormsReactiveComponent,
-    AuthComponent
+    AuthComponent,
+    TestComponent
     
     
 
