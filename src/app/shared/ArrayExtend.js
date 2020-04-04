@@ -20,4 +20,41 @@ let a = [1,2,3,4,5,6];
         return arr;
       };
    
-    console.log(a.pushpakfilter(s => s % 2 === 0));
+      const gameData = [
+        {
+          title: 'Mega Man 2',
+          bosses: [
+            {
+              name: 'Bubble Man',
+              weapon: 'Bubble Beam'
+            },
+            {
+              name: 'Metal Man',
+              weapon: 'Metal Blade'
+            }]
+        },
+        {
+          title: 'Mega Man 3',
+          bosses: [
+            {
+              name: 'Gemini Man',
+              weapon: 'Gemini Laser'
+            },
+            {
+              name: 'Top Man',
+              weapon: 'Top Spin'
+            }]
+        }
+      ];
+Array.prototype.flatten = function(){
+   let retVal = [];
+
+   this.forEach(a => {
+     retVal = retVal.concat(a);
+   });
+
+   return retVal;
+
+}
+
+    console.log(gameData.pushpakmap(s => { return s.bosses}).flatten());
