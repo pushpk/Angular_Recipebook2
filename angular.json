@@ -26,7 +26,9 @@
              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/app/shared/ArrayExtend.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -82,7 +84,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/app/shared/ArrayExtend.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
